@@ -1,9 +1,7 @@
 package io.github.bfur64.usc_attendance_server.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -11,6 +9,7 @@ import java.time.Instant;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 @Entity
 public class AcademicYear {
 
@@ -18,6 +17,7 @@ public class AcademicYear {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     @Column(nullable = false)
     private String name;
 
@@ -28,10 +28,6 @@ public class AcademicYear {
     @UpdateTimestamp
     @Column(nullable = false)
     private Instant modifiedAt;
-
-    public AcademicYear(String name) {
-        this.name = name;
-    }
 
     public void update(String name) {
         this.name = name;

@@ -1,10 +1,10 @@
 package io.github.bfur64.usc_attendance_server.dto.response;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public record AcademicYearResponse(
         Long id,
         String name,
-        LocalDateTime createdAt,
-        LocalDateTime modifiedAt
+        Instant createdAt,
+        Instant modifiedAt
 ) {}
