@@ -29,7 +29,7 @@ public class AcademicYear {
     @Column(nullable = false)
     private Instant modifiedAt;
 
-    public void update(String name) {
+    public void update(@NonNull String name) {
         this.name = name;
     }
 
