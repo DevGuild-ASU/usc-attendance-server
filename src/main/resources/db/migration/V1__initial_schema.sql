@@ -1,0 +1,6 @@
+CREATE TABLE academic_year (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    date_start DATETIME(6) NOT NULL,
+    date_end DATETIME(6) NOT NULL
+)
