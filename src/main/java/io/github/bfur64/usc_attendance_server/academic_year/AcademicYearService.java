@@ -62,4 +62,9 @@ public class AcademicYearService {
         });
     }
 
+    @Transactional
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
 }

@@ -37,10 +37,11 @@ public class AcademicYearController {
         return service.update(id, request).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    // Implement when the other tables exist
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
+        service.delete(id);
+
+        return ResponseEntity.noContent().build();
     }
 
 }
