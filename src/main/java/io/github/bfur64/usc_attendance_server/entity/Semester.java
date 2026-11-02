@@ -27,7 +27,7 @@ public class Semester {
 
     @NonNull
     @Column(nullable = false)
-    private Integer semesterNumber;
+    private Byte semesterNumber;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
@@ -37,7 +37,7 @@ public class Semester {
     @Column(nullable = false)
     private Instant modifiedAt;
 
-    public void update(@NonNull AcademicYear academicYear, @NonNull Integer semesterNumber) {
+    public void update(@NonNull AcademicYear academicYear, @NonNull Byte semesterNumber) {
         this.academicYear = academicYear;
         this.semesterNumber = semesterNumber;
     }
