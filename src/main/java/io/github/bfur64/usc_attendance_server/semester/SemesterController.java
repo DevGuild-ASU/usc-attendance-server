@@ -32,7 +32,7 @@ public class SemesterController {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.create(request));
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<SemesterResponse> update(@PathVariable Long id, @Valid @RequestBody SemesterRequest request) {
         return service.update(id, request).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
