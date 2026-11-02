@@ -1,4 +1,4 @@
-package io.github.bfur64.usc_attendance_server.dto.request;
+package io.github.bfur64.usc_attendance_server.semester.dto;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

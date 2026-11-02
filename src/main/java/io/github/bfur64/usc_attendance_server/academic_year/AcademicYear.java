@@ -1,4 +1,4 @@
-package io.github.bfur64.usc_attendance_server.entity;
+package io.github.bfur64.usc_attendance_server.academic_year;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,23 +11,15 @@ import java.time.Instant;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @RequiredArgsConstructor
 @Entity
-public class Semester {
+public class AcademicYear {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(
-        name = "year_id",
-        nullable = false,
-        foreignKey = @ForeignKey(name = "fk_semester_academic_year")
-    )
-    @NonNull
-    private AcademicYear academicYear;
-
     @NonNull
     @Column(nullable = false)
-    private Byte semesterNumber;
+    private String name;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
@@ -37,9 +29,8 @@ public class Semester {
     @Column(nullable = false)
     private Instant modifiedAt;
 
-    public void update(@NonNull AcademicYear academicYear, @NonNull Byte semesterNumber) {
-        this.academicYear = academicYear;
-        this.semesterNumber = semesterNumber;
+    public void update(@NonNull String name) {
+        this.name = name;
     }
 
 }

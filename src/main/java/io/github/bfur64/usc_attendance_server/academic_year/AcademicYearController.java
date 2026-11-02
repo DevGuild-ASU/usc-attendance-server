@@ -1,8 +1,7 @@
-package io.github.bfur64.usc_attendance_server.controller;
+package io.github.bfur64.usc_attendance_server.academic_year;
 
-import io.github.bfur64.usc_attendance_server.dto.request.SemesterRequest;
-import io.github.bfur64.usc_attendance_server.dto.response.SemesterResponse;
-import io.github.bfur64.usc_attendance_server.service.SemesterService;
+import io.github.bfur64.usc_attendance_server.academic_year.dto.AcademicYearRequest;
+import io.github.bfur64.usc_attendance_server.academic_year.dto.AcademicYearResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,29 +11,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/admin/semesters")
+@RequestMapping("/api/admin/academic-years")
 @RequiredArgsConstructor
-public class SemesterController {
+public class AcademicYearController {
 
-    private final SemesterService service;
+    private final AcademicYearService service;
 
     @GetMapping
-    public List<SemesterResponse> findAll() {
+    public List<AcademicYearResponse> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SemesterResponse> findById(@PathVariable Long id) {
+    public ResponseEntity<AcademicYearResponse> findById(@PathVariable Long id) {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<SemesterResponse> create(@Valid @RequestBody SemesterRequest request) {
+    public ResponseEntity<AcademicYearResponse> create(@Valid @RequestBody AcademicYearRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.create(request));
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<SemesterResponse> update(@PathVariable Long id, @Valid @RequestBody SemesterRequest request) {
+    @PutMapping("/{id}")
+    public ResponseEntity<AcademicYearResponse> update(@PathVariable Long id, @Valid @RequestBody AcademicYearRequest request) {
         return service.update(id, request).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 

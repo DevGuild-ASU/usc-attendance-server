@@ -1,9 +1,7 @@
-package io.github.bfur64.usc_attendance_server.service;
+package io.github.bfur64.usc_attendance_server.academic_year;
 
-import io.github.bfur64.usc_attendance_server.dto.request.AcademicYearRequest;
-import io.github.bfur64.usc_attendance_server.dto.response.AcademicYearResponse;
-import io.github.bfur64.usc_attendance_server.entity.AcademicYear;
-import io.github.bfur64.usc_attendance_server.repository.AcademicYearRepository;
+import io.github.bfur64.usc_attendance_server.academic_year.dto.AcademicYearRequest;
+import io.github.bfur64.usc_attendance_server.academic_year.dto.AcademicYearResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

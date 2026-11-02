@@ -1,4 +1,4 @@
-package io.github.bfur64.usc_attendance_server.dto.response;
+package io.github.bfur64.usc_attendance_server.semester.dto;
 
 import java.time.Instant;
 

@@ -1,11 +1,9 @@
-package io.github.bfur64.usc_attendance_server.service;
+package io.github.bfur64.usc_attendance_server.semester;
 
-import io.github.bfur64.usc_attendance_server.dto.request.SemesterRequest;
-import io.github.bfur64.usc_attendance_server.dto.response.SemesterResponse;
-import io.github.bfur64.usc_attendance_server.entity.AcademicYear;
-import io.github.bfur64.usc_attendance_server.entity.Semester;
-import io.github.bfur64.usc_attendance_server.repository.AcademicYearRepository;
-import io.github.bfur64.usc_attendance_server.repository.SemesterRepository;
+import io.github.bfur64.usc_attendance_server.semester.dto.SemesterRequest;
+import io.github.bfur64.usc_attendance_server.semester.dto.SemesterResponse;
+import io.github.bfur64.usc_attendance_server.academic_year.AcademicYear;
+import io.github.bfur64.usc_attendance_server.academic_year.AcademicYearRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

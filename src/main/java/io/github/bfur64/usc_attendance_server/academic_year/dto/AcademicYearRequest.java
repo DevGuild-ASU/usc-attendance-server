@@ -1,4 +1,4 @@
-package io.github.bfur64.usc_attendance_server.dto.request;
+package io.github.bfur64.usc_attendance_server.academic_year.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
