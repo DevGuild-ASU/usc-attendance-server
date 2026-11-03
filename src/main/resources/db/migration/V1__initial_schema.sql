@@ -25,7 +25,7 @@ CREATE TABLE semester (
         UNIQUE (year_id, semester_number)
 );
 
-CREATE TABLE EVENT (
+CREATE TABLE event (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     semester_id BIGINT NOT NULL,
     name VARCHAR(255) NOT NULL,
