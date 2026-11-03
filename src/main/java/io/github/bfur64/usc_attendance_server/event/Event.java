@@ -63,7 +63,7 @@ public class Event {
 
     private void checkDateRange(LocalDate dateStart, LocalDate dateEnd) {
         if (dateStart.isAfter(dateEnd)) {
-            throw new IllegalArgumentException("Start date cannot be after end date.");
+            throw new IllegalArgumentException("Start date cannot be after end date");
         }
     }
 }
