@@ -24,3 +24,19 @@ CREATE TABLE semester (
     CONSTRAINT uq_semester_number
         UNIQUE (year_id, semester_number)
 );
+
+CREATE TABLE EVENT (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    semester_id BIGINT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    date_start DATE NOT NULL,
+    date_end DATE NOT NULL,
+    created_at DATETIME(6) NOT NULL,
+    modified_at DATETIME(6) NOT NULL,
+
+    CONSTRAINT fk_event_semester
+        FOREIGN KEY (semester_id)
+        REFERENCES semester(id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
