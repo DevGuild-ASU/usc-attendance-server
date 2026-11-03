@@ -27,8 +27,9 @@ public class Semester {
     private AcademicYear academicYear;
 
     @NonNull
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Byte semesterNumber;
+    private SemesterType semesterType;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
@@ -38,9 +39,9 @@ public class Semester {
     @Column(nullable = false)
     private Instant modifiedAt;
 
-    public void update(@NonNull AcademicYear academicYear, @NonNull Byte semesterNumber) {
+    public void update(@NonNull AcademicYear academicYear, @NonNull SemesterType semesterType) {
         this.academicYear = academicYear;
-        this.semesterNumber = semesterNumber;
+        this.semesterType = semesterType;
     }
 
 }

@@ -11,7 +11,7 @@ CREATE TABLE academic_year (
 CREATE TABLE semester (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     year_id BIGINT NOT NULL,
-    semester_number TINYINT NOT NULL,
+    semester_type VARCHAR(6) NOT NULL,
     created_at DATETIME(6) NOT NULL,
     modified_at DATETIME(6) NOT NULL,
 
@@ -21,11 +21,11 @@ CREATE TABLE semester (
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
 
-    CONSTRAINT chk_semester_number
-        CHECK ( semester_number IN (1, 2)),
+    CONSTRAINT chk_semester_type
+        CHECK ( semester_type IN ('first', 'second') ),
 
     CONSTRAINT uq_semester_number
-        UNIQUE (year_id, semester_number)
+        UNIQUE (year_id, semester_type)
 );
 
 CREATE TABLE event (

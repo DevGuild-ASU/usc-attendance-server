@@ -24,7 +24,7 @@ public class SemesterService {
         return repository.findAll().stream().map(existing -> new SemesterResponse(
             existing.getId(),
             existing.getAcademicYear().getId(),
-            existing.getSemesterNumber(),
+            existing.getSemesterType(),
             existing.getCreatedAt(),
             existing.getModifiedAt()
         ))
@@ -36,7 +36,7 @@ public class SemesterService {
         return repository.findById(id).map(existing -> new SemesterResponse(
             existing.getId(),
             existing.getAcademicYear().getId(),
-            existing.getSemesterNumber(),
+            existing.getSemesterType(),
             existing.getCreatedAt(),
             existing.getModifiedAt()
         ));
@@ -47,12 +47,12 @@ public class SemesterService {
         AcademicYear academicYear = academicYearRepository.findById(request.yearId())
             .orElseThrow(() -> new EntityNotFoundException("Academic year not found"));
 
-        Semester entity = repository.save(new Semester(academicYear, request.semesterNumber()));
+        Semester entity = repository.save(new Semester(academicYear, request.semesterType()));
 
         return new SemesterResponse(
             entity.getId(),
             entity.getAcademicYear().getId(),
-            entity.getSemesterNumber(),
+            entity.getSemesterType(),
             entity.getCreatedAt(),
             entity.getModifiedAt()
         );
@@ -64,12 +64,12 @@ public class SemesterService {
             AcademicYear academicYear = academicYearRepository.findById(request.yearId())
                     .orElseThrow(() -> new EntityNotFoundException("Academic year not found"));
 
-            existing.update(academicYear, request.semesterNumber());
+            existing.update(academicYear, request.semesterType());
 
             return new SemesterResponse(
                 existing.getId(),
                 existing.getAcademicYear().getId(),
-                existing.getSemesterNumber(),
+                existing.getSemesterType(),
                 existing.getCreatedAt(),
                 existing.getModifiedAt()
             );

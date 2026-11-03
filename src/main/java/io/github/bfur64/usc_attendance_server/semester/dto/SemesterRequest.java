@@ -1,7 +1,6 @@
 package io.github.bfur64.usc_attendance_server.semester.dto;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
+import io.github.bfur64.usc_attendance_server.semester.SemesterType;
 import jakarta.validation.constraints.NotNull;
 
 public record SemesterRequest(
@@ -9,7 +8,5 @@ public record SemesterRequest(
     Long yearId,
 
     @NotNull
-    @Min(value = 1, message = "Semester number must be at least 1")
-    @Max(value = 2, message = "Semester number must not exceed 2")
-    Byte semesterNumber
+    SemesterType semesterType
 ) {}
