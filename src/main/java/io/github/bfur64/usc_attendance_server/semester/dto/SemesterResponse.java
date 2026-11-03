@@ -7,7 +7,7 @@ import java.time.Instant;
 public record SemesterResponse(
     Long id,
     Long yearId,
-    SemesterType semesterType,
+    SemesterType type,
     Instant createdAt,
     Instant modifiedAt
 ) {}

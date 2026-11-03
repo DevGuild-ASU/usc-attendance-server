@@ -11,7 +11,7 @@ CREATE TABLE academic_year (
 CREATE TABLE semester (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     year_id BIGINT NOT NULL,
-    semester_type VARCHAR(6) NOT NULL,
+    type VARCHAR(6) NOT NULL,
     created_at DATETIME(6) NOT NULL,
     modified_at DATETIME(6) NOT NULL,
 
@@ -21,11 +21,11 @@ CREATE TABLE semester (
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
 
-    CONSTRAINT chk_semester_type
-        CHECK ( semester_type IN ('first', 'second') ),
+    CONSTRAINT chk_type
+        CHECK ( type IN ('first', 'second') ),
 
     CONSTRAINT uq_semester_number
-        UNIQUE (year_id, semester_type)
+        UNIQUE (year_id, type)
 );
 
 CREATE TABLE event (
@@ -47,3 +47,25 @@ CREATE TABLE event (
         CHECK (date_end >= date_start)
 );
 
+CREATE TABLE event_session (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    event_id BIGINT NOT NULL,
+    date DATE NOT NULL,
+    type VARCHAR(16) NOT NULL,
+    fee DECIMAL(3, 0) NOT NULL,
+
+    CONSTRAINT fk_event_session_event
+        FOREIGN KEY (event_id)
+        REFERENCES event(id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+
+    CONSTRAINT uq_event_session
+        UNIQUE (event_id, date, type),
+
+    CONSTRAINT chk_type
+        CHECK ( type IN ('morning_login', 'morning_logout', 'afternoon_login', 'afternoon_logout') ),
+
+    CONSTRAINT chk_event_session_fee
+        CHECK (fee >= 0)
+);

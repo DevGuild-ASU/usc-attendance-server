@@ -8,5 +8,5 @@ public record SemesterRequest(
     Long yearId,
 
     @NotNull
-    SemesterType semesterType
+    SemesterType type
 ) {}

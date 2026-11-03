@@ -29,7 +29,7 @@ public class Semester {
     @NonNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private SemesterType semesterType;
+    private SemesterType type;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
@@ -39,9 +39,9 @@ public class Semester {
     @Column(nullable = false)
     private Instant modifiedAt;
 
-    public void update(@NonNull AcademicYear academicYear, @NonNull SemesterType semesterType) {
+    public void update(@NonNull AcademicYear academicYear, @NonNull SemesterType type) {
         this.academicYear = academicYear;
-        this.semesterType = semesterType;
+        this.type = type;
     }
 
 }
