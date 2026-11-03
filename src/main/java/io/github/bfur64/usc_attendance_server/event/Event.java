@@ -11,15 +11,13 @@ import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@RequiredArgsConstructor
 @Entity
 public class Event {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
         name = "semester_id",
@@ -28,15 +26,12 @@ public class Event {
     )
     private Semester semester;
 
-    @NonNull
     @Column(nullable = false)
     private String name;
 
-    @NonNull
     @Column(nullable = false)
     private LocalDate dateStart;
 
-    @NonNull
     @Column(nullable = false)
     private LocalDate dateEnd;
 
@@ -48,10 +43,27 @@ public class Event {
     @Column(nullable = false)
     private Instant modifiedAt;
 
-    public void update(@NonNull Semester semester, @NonNull String name, @NonNull LocalDate dateStart, @NonNull LocalDate dateEnd) {
+    public Event(@NonNull Semester semester, @NonNull String name, @NonNull LocalDate dateStart, @NonNull LocalDate dateEnd) {
+        checkDateRange(dateStart, dateEnd);
+
         this.semester = semester;
         this.name = name;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
+    }
+
+    public void update(@NonNull Semester semester, @NonNull String name, @NonNull LocalDate dateStart, @NonNull LocalDate dateEnd) {
+        checkDateRange(dateStart, dateEnd);
+
+        this.semester = semester;
+        this.name = name;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+    }
+
+    private void checkDateRange(LocalDate dateStart, LocalDate dateEnd) {
+        if (dateStart.isAfter(dateEnd)) {
+            throw new IllegalArgumentException("Start date cannot be after end date.");
+        }
     }
 }
