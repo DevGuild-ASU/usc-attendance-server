@@ -17,13 +17,13 @@ public class Semester {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
         name = "year_id",
         nullable = false,
         foreignKey = @ForeignKey(name = "fk_semester_academic_year")
     )
-    @NonNull
     private AcademicYear academicYear;
 
     @NonNull
