@@ -2,7 +2,10 @@ CREATE TABLE academic_year (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     created_at DATETIME(6) NOT NULL,
-    modified_at DATETIME(6) NOT NULL
+    modified_at DATETIME(6) NOT NULL,
+
+    CONSTRAINT uq_academic_year_name
+        UNIQUE (name)
 );
 
 CREATE TABLE semester (
@@ -38,5 +41,9 @@ CREATE TABLE event (
         FOREIGN KEY (semester_id)
         REFERENCES semester(id)
         ON DELETE RESTRICT
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE,
+
+    CONSTRAINT chk_event_dates
+        CHECK (date_end >= date_start)
 );
+
